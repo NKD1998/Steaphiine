@@ -13,6 +13,8 @@
 <style>
   *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:#F7F9FD}
   a{color:#12A6CE}a:hover{color:#0E1E5B}
+  @media(max-width:900px){[style*="1.35fr .9fr"],[style*="1.1fr 1fr"],[style*=".85fr 1.4fr"],[style*="grid-template-columns:auto 1fr"],[style*="1.3fr 1fr"],[style*=".85fr 1.15fr"],[style*="1.15fr .85fr"],[style*="grid-template-columns:1fr 1fr"]{grid-template-columns:1fr !important}[style*="padding:150px 24px 90px"]{padding-top:118px !important}}
+  @media(max-width:600px){[style*="padding:120px 24px 80px"]{padding-top:104px !important}}
   @keyframes spinslow{to{transform:rotate(360deg)}}
   @keyframes pop{0%{transform:scale(.6);opacity:0}60%{transform:scale(1.08)}100%{transform:scale(1);opacity:1}}
   input,select,textarea{font-family:'Plus Jakarta Sans',sans-serif}
