@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="./image-slot.js"></script>
+<style>
+  *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:#F7F9FD}
+  a{color:#12A6CE}a:hover{color:#0E1E5B}
+  @keyframes spinslow{to{transform:rotate(360deg)}}
+</style>
+</helmet>
+<div ref="{{ rootRef }}" style="font-family:'Plus Jakarta Sans',sans-serif;color:#1B2340;overflow-x:hidden">
+  <dc-import name="NavBar" active="about" hint-size="100%,68px"></dc-import>
+
+  <section style="position:relative;padding:150px 24px 90px;overflow:hidden;background:radial-gradient(800px 400px at 80% 10%,rgba(18,166,206,.4),transparent),linear-gradient(120deg,#0E1E5B,#17246E)">
+    <div style="position:absolute;top:-30px;right:6%;width:220px;height:220px;opacity:.16;animation:spinslow 55s linear infinite"><dc-import name="Logo" hint-size="100%,100%"></dc-import></div>
+    <div style="max-width:1240px;margin:0 auto;position:relative">
+      <div style="display:flex;gap:8px;align-items:center;color:#9FAAD6;font-size:14px;margin-bottom:16px"><a href="index.dc.html" style="color:#9FAAD6;text-decoration:none">Home</a><span>/</span><span style="color:#F6C21C">About</span></div>
+      <h1 style="font-family:'Sora',sans-serif;font-weight:800;font-size:clamp(34px,5vw,58px);color:#fff;margin:0 0 16px;letter-spacing:-.02em">About Our School</h1>
+      <p style="color:#D5DEF7;font-size:clamp(16px,1.6vw,19px);line-height:1.6;max-width:640px;margin:0">A caring, English medium school in Adai, Panvel — helping every child Learn, Achieve and Believe since our founding.</p>
+    </div>
+  </section>
+
+  <section data-reveal style="max-width:1240px;margin:0 auto;padding:84px 24px 40px;display:grid;grid-template-columns:1.1fr 1fr;gap:52px;align-items:center;opacity:0;transform:translateY(28px);transition:opacity .7s,transform .7s">
+    <div>
+      <span style="color:#12A6CE;font-weight:700;font-size:14px;letter-spacing:.14em;text-transform:uppercase">Our Story</span>
+      <h2 style="font-family:'Sora',sans-serif;font-weight:800;font-size:clamp(28px,3.6vw,40px);color:#17246E;margin:12px 0 18px;letter-spacing:-.02em">Rooted in the community we serve</h2>
+      <p style="color:#4A5578;font-size:16.5px;line-height:1.75;margin:0 0 16px">Steaphiin High School is a coeducational, English medium school offering the Maharashtra State Board curriculum from Nursery through Standard 10. We are run under <strong style="color:#17246E">BNGO Savie Education Society</strong>, with a simple belief: every child deserves an education that is both rigorous and full of warmth.</p>
+      <p style="color:#4A5578;font-size:16.5px;line-height:1.75;margin:0 0 22px"><span style="background:#FFF4D4;border-bottom:1.5px dashed #E0A400;padding:1px 4px;border-radius:3px;color:#8A6300;font-weight:600">[Add founding year &amp; a short history here]</span> — share when the school was established and the vision that started it.</p>
+      <div style="display:flex;gap:26px;flex-wrap:wrap">
+        <div><div style="font-family:'Sora',sans-serif;font-weight:800;font-size:30px;color:#12A6CE">10<sup>th</sup></div><div style="color:#5A6488;font-size:14px">Highest Standard</div></div>
+        <div><div style="font-family:'Sora',sans-serif;font-weight:800;font-size:30px;color:#12A6CE">21:1</div><div style="color:#5A6488;font-size:14px">Student : Teacher</div></div>
+        <div><div style="font-family:'Sora',sans-serif;font-weight:800;font-size:30px;color:#12A6CE">4.6<span style="font-size:18px">/5</span></div><div style="color:#5A6488;font-size:14px">Parent Rating</div></div>
+      </div>
+    </div>
+    <div style="position:relative">
+      <div style="border-radius:24px;overflow:hidden;box-shadow:0 24px 60px rgba(23,36,110,.2);aspect-ratio:4/5"><image-slot id="about_story" shape="rect" src="assets/school-building.jpeg" placeholder="Drop a campus photo"></image-slot></div>
+      <div style="position:absolute;-bottom:0;bottom:-22px;left:-22px;background:#fff;border-radius:18px;padding:18px 22px;box-shadow:0 16px 40px rgba(23,36,110,.18);display:flex;align-items:center;gap:12px">
+        <span style="width:46px;height:46px;background:#EAF0FF;border-radius:12px;padding:7px;box-sizing:border-box"><dc-import name="Logo" hint-size="32px,32px"></dc-import></span>
+        <div><div style="font-family:'Sora',sans-serif;font-weight:700;color:#17246E;font-size:15px">Adai, Panvel</div><div style="color:#8A93B2;font-size:13px">Navi Mumbai 410206</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section data-reveal style="max-width:1240px;margin:0 auto;padding:56px 24px;opacity:0;transform:translateY(28px);transition:opacity .7s,transform .7s">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px;perspective:1200px">
+      <sc-for list="{{ pillars }}" as="p" hint-placeholder-count="3">
+        <div onMouseMove="{{ tiltMove }}" onMouseLeave="{{ tiltLeave }}" style="border-radius:22px;padding:34px 28px;color:#fff;transform-style:preserve-3d;transition:transform .2s ease-out;background:{{ p.bg }};box-shadow:0 18px 44px rgba(23,36,110,.16)">
+          <div style="width:58px;height:58px;border-radius:15px;background:rgba(255,255,255,.18);display:flex;align-items:center;justify-content:center;margin-bottom:18px;transform:translateZ(30px)">{{ p.icon }}</div>
+          <h3 style="font-family:'Sora',sans-serif;font-weight:700;font-size:22px;margin:0 0 12px;transform:translateZ(20px)">{{ p.title }}</h3>
+          <p style="font-size:15px;line-height:1.65;margin:0;opacity:.94;transform:translateZ(12px)">{{ p.text }}</p>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+
+  <section data-reveal style="max-width:1240px;margin:0 auto;padding:56px 24px;opacity:0;transform:translateY(28px);transition:opacity .7s,transform .7s">
+    <div style="background:#fff;border:1px solid #EAEEF9;border-radius:28px;overflow:hidden;display:grid;grid-template-columns:.85fr 1.4fr;box-shadow:0 20px 50px rgba(23,36,110,.08)">
+      <div style="position:relative;min-height:360px;background:linear-gradient(160deg,#17246E,#0E1E5B)">
+        <image-slot id="about_principal" shape="rect" placeholder="Drop principal's photo"></image-slot>
+      </div>
+      <div style="padding:clamp(32px,4vw,56px)">
+        <span style="color:#12A6CE;font-weight:700;font-size:14px;letter-spacing:.14em;text-transform:uppercase">From the Principal's Desk</span>
+        <h2 style="font-family:'Sora',sans-serif;font-weight:800;font-size:clamp(24px,3vw,34px);color:#17246E;margin:12px 0 18px;letter-spacing:-.02em">A message to our families</h2>
+        <p style="color:#4A5578;font-size:16.5px;line-height:1.8;margin:0 0 18px;font-style:italic">"<span style="background:#FFF4D4;border-bottom:1.5px dashed #E0A400;padding:1px 4px;border-radius:3px;color:#8A6300;font-weight:600;font-style:normal">[Add the Principal's welcome message here]</span> — a warm paragraph about the school's values, the child-first approach, and what parents can expect."</p>
+        <div style="display:flex;align-items:center;gap:14px;margin-top:24px">
+          <div><div style="font-family:'Sora',sans-serif;font-weight:700;color:#17246E;font-size:16px">[Principal's Name]</div><div style="color:#8A93B2;font-size:14px">Principal, Steaphiin High School</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section data-reveal style="padding:40px 24px 90px;opacity:0;transform:translateY(28px);transition:opacity .7s,transform .7s">
+    <div style="max-width:1240px;margin:0 auto;border-radius:28px;padding:clamp(40px,6vw,72px);text-align:center;background:radial-gradient(600px 300px at 50% 0%,rgba(246,194,28,.18),transparent),linear-gradient(120deg,#12A6CE,#17246E);box-shadow:0 26px 60px rgba(23,36,110,.24)">
+      <span style="color:#EAF0FF;font-size:15px;letter-spacing:.24em;text-transform:uppercase;font-weight:600">Our Motto</span>
+      <h2 style="font-family:'Sora',sans-serif;font-weight:800;font-size:clamp(34px,6vw,64px);color:#fff;margin:16px 0 0;letter-spacing:-.01em">Learn · Achieve · Believe</h2>
+    </div>
+  </section>
+
+  <dc-import name="Footer" hint-size="100%,320px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1280,&quot;height&quot;:900}}">
+class Component extends DCLogic {
+  rootRef = React.createRef();
+  componentDidMount(){
+    const io = new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.style.opacity='1';e.target.style.transform='translateY(0)';io.unobserve(e.target);}})},{threshold:0.12});
+    if(this.rootRef.current) this.rootRef.current.querySelectorAll('[data-reveal]').forEach(el=>io.observe(el));
+  }
+  renderVals(){
+    const ic=(p)=>React.createElement('span',{style:{transform:'translateZ(30px)',lineHeight:0},dangerouslySetInnerHTML:{__html:p}});
+    const pillars=[
+      {title:'Our Mission', bg:'linear-gradient(155deg,#12A6CE,#17246E)', text:'To nurture confident, curious and kind learners through strong academics and genuine care for every child.', icon:ic('<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4"/><circle cx="12" cy="12" r="0.5" fill="#fff"/></svg>')},
+      {title:'Our Vision', bg:'linear-gradient(155deg,#5C2E86,#2A1550)', text:'To be Panvel\u2019s most trusted neighbourhood school, where each student discovers their strengths and believes in their potential.', icon:ic('<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/></svg>')},
+      {title:'Our Values', bg:'linear-gradient(155deg,#F0A400,#B9640A)', text:'Respect, curiosity, effort and belonging \u2014 the everyday habits that shape good students and good people.', icon:ic('<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"><path d="M12 21s-7-4.5-9-9C1.5 8.5 3.5 5 7 5c2 0 3.5 1.5 5 3 1.5-1.5 3-3 5-3 3.5 0 5.5 3.5 4 7-2 4.5-9 9-9 9z"/></svg>')}
+    ];
+    return {rootRef:this.rootRef, pillars,
+      tiltMove:(e)=>{const c=e.currentTarget,r=c.getBoundingClientRect();const x=(e.clientX-r.left)/r.width-0.5,y=(e.clientY-r.top)/r.height-0.5;c.style.transform='rotateY('+(x*8)+'deg) rotateX('+(-y*8)+'deg) translateY(-4px)';},
+      tiltLeave:(e)=>{e.currentTarget.style.transform='rotateY(0) rotateX(0) translateY(0)';}};
+  }
+}
+</script>
+</body>
+</html>

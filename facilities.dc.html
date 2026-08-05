@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="./image-slot.js"></script>
+<style>
+  *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:#F7F9FD}
+  a{color:#12A6CE}a:hover{color:#0E1E5B}
+  @keyframes spinslow{to{transform:rotate(360deg)}}
+</style>
+</helmet>
+<div ref="{{ rootRef }}" style="font-family:'Plus Jakarta Sans',sans-serif;color:#1B2340;overflow-x:hidden">
+  <dc-import name="NavBar" active="facilities" hint-size="100%,68px"></dc-import>
+
+  <section style="position:relative;padding:150px 24px 90px;overflow:hidden;background:radial-gradient(800px 400px at 82% 10%,rgba(31,164,99,.4),transparent),linear-gradient(120deg,#0E1E5B,#17246E)">
+    <div style="position:absolute;top:-30px;right:6%;width:220px;height:220px;opacity:.16;animation:spinslow 55s linear infinite"><dc-import name="Logo" hint-size="100%,100%"></dc-import></div>
+    <div style="max-width:1240px;margin:0 auto;position:relative">
+      <div style="display:flex;gap:8px;align-items:center;color:#9FAAD6;font-size:14px;margin-bottom:16px"><a href="index.dc.html" style="color:#9FAAD6;text-decoration:none">Home</a><span>/</span><span style="color:#F6C21C">Facilities</span></div>
+      <h1 style="font-family:'Sora',sans-serif;font-weight:800;font-size:clamp(34px,5vw,58px);color:#fff;margin:0 0 16px;letter-spacing:-.02em">Facilities &amp; Campus</h1>
+      <p style="color:#D5DEF7;font-size:clamp(16px,1.6vw,19px);line-height:1.6;max-width:660px;margin:0">A safe, welcoming campus in Adai designed to help children learn, play and grow with confidence.</p>
+    </div>
+  </section>
+
+  <section data-reveal style="max-width:1240px;margin:0 auto;padding:84px 24px 30px;opacity:0;transform:translateY(28px);transition:opacity .7s,transform .7s">
+    <div style="display:grid;grid-template-columns:1.15fr .85fr;gap:44px;align-items:center">
+      <div>
+        <span style="color:#12A6CE;font-weight:700;font-size:14px;letter-spacing:.14em;text-transform:uppercase">Our Campus</span>
+        <h2 style="font-family:'Sora',sans-serif;font-weight:800;font-size:clamp(26px,3.6vw,40px);color:#17246E;margin:12px 0 16px;letter-spacing:-.02em">Built for curious, active young learners</h2>
+        <p style="color:#4A5578;font-size:16.5px;line-height:1.75;margin:0 0 16px">Our English medium campus offers bright classrooms and a gated, supervised environment where every child feels secure. <span style="background:#FFF4D4;border-bottom:1.5px dashed #E0A400;padding:1px 4px;border-radius:3px;color:#8A6300;font-weight:600">[Add a short paragraph describing your actual facilities and campus here.]</span></p>
+        <p style="color:#4A5578;font-size:16.5px;line-height:1.75;margin:0">From daily lessons to cocurricular activities through our Groww Edu Hub, the campus supports a full, well rounded school day.</p>
+      </div>
+      <div style="border-radius:24px;overflow:hidden;box-shadow:0 22px 56px rgba(23,36,110,.18);aspect-ratio:4/3"><image-slot id="fac_campus" shape="rect" src="assets/school-building.jpeg" placeholder="Drop a campus photo"></image-slot></div>
+    </div>
+  </section>
+
+  <section data-reveal style="max-width:1240px;margin:0 auto;padding:50px 24px;opacity:0;transform:translateY(28px);transition:opacity .7s,transform .7s">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:22px;perspective:1200px">
+      <sc-for list="{{ facilities }}" as="f" hint-placeholder-count="6">
+        <div onMouseMove="{{ tiltMove }}" onMouseLeave="{{ tiltLeave }}" style="background:#fff;border:1px solid #EAEEF9;border-radius:22px;padding:30px 26px;transform-style:preserve-3d;transition:transform .2s ease-out,box-shadow .3s;box-shadow:0 4px 16px rgba(23,36,110,.05)" style-hover="box-shadow:0 20px 46px rgba(23,36,110,.14)">
+          <div style="width:60px;height:60px;border-radius:16px;display:flex;align-items:center;justify-content:center;margin-bottom:18px;background:{{ f.bg }};transform:translateZ(28px)">{{ f.icon }}</div>
+          <h3 style="font-family:'Sora',sans-serif;font-weight:700;font-size:19px;color:#17246E;margin:0 0 10px;transform:translateZ(18px)">{{ f.title }}</h3>
+          <p style="color:#5A6488;font-size:14.5px;line-height:1.6;margin:0;transform:translateZ(10px)">{{ f.text }}</p>
+        </div>
+      </sc-for>
+    </div>
+    <p style="text-align:center;color:#8A6300;font-size:14px;margin:34px auto 0;max-width:660px"><span style="background:#FFF4D4;border-bottom:1.5px dashed #E0A400;padding:2px 6px;border-radius:4px;font-weight:600">[Facilities listed above are suggested placeholders — confirm which the school actually offers and update the descriptions.]</span></p>
+  </section>
+
+  <section data-reveal style="padding:40px 24px 90px;opacity:0;transform:translateY(28px);transition:opacity .7s,transform .7s">
+    <div style="max-width:1240px;margin:0 auto;border-radius:28px;padding:clamp(36px,5vw,60px);display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:28px;text-align:center;background:linear-gradient(120deg,#12A6CE,#17246E);box-shadow:0 26px 60px rgba(23,36,110,.24)">
+      <sc-for list="{{ highlights }}" as="h" hint-placeholder-count="4">
+        <div><div style="font-family:'Sora',sans-serif;font-weight:800;font-size:clamp(28px,3.5vw,40px);color:#F6C21C">{{ h.v }}</div><div style="color:#EAF0FF;font-size:14px;margin-top:6px">{{ h.l }}</div></div>
+      </sc-for>
+    </div>
+  </section>
+
+  <dc-import name="Footer" hint-size="100%,320px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1280,&quot;height&quot;:900}}">
+class Component extends DCLogic {
+  rootRef = React.createRef();
+  componentDidMount(){
+    const io=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.style.opacity='1';e.target.style.transform='translateY(0)';io.unobserve(e.target);}})},{threshold:0.1});
+    if(this.rootRef.current) this.rootRef.current.querySelectorAll('[data-reveal]').forEach(el=>io.observe(el));
+  }
+  renderVals(){
+    const ic=(p)=>React.createElement('span',{style:{lineHeight:0},dangerouslySetInnerHTML:{__html:p}});
+    const facilities=[
+      {title:'Bright Classrooms', bg:'#E7F6FB', text:'Spacious, well lit rooms that keep young learners comfortable and focused.', icon:ic('<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#12A6CE" stroke-width="2" stroke-linecap="round"><rect x="3" y="4" width="18" height="13" rx="2"/><path d="M8 21h8M12 17v4"/></svg>')},
+      {title:'Library & Reading', bg:'#FEF4D9', text:'A quiet corner to build a lifelong love of books and stories. [Confirm]', icon:ic('<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#F0A400" stroke-width="2" stroke-linecap="round"><path d="M4 4h7v16H4zM13 4h7v16h-7z"/><path d="M7 8h1M16 8h1"/></svg>')},
+      {title:'Activity & Computer Room', bg:'#EFE7FB', text:'Space for abacus, phonics, drawing and digital learning. [Confirm]', icon:ic('<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#5C2E86" stroke-width="2" stroke-linecap="round"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8M12 16v4"/></svg>')},
+      {title:'Play Area', bg:'#E5F7EC', text:'Room to run, play and build friendships during the school day. [Confirm]', icon:ic('<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#1FA463" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="5" r="2"/><path d="M12 7v6M8 20l4-7 4 7M6 11l6 2 6-2"/></svg>')},
+      {title:'Safe & Gated', bg:'#E7F6FB', text:'A supervised, gated campus so parents can drop off with peace of mind.', icon:ic('<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#12A6CE" stroke-width="2" stroke-linecap="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>')},
+      {title:'Transport', bg:'#FEF4D9', text:'Convenient location near Krishna Mandir, Adai. [Confirm transport options]', icon:ic('<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#F0A400" stroke-width="2" stroke-linecap="round"><rect x="3" y="5" width="18" height="12" rx="2"/><path d="M3 11h18M7 17v2M17 17v2"/><circle cx="7.5" cy="14" r="0.5" fill="#F0A400"/><circle cx="16.5" cy="14" r="0.5" fill="#F0A400"/></svg>')}
+    ];
+    const highlights=[{v:'Nur–10',l:'Grades on campus'},{v:'21:1',l:'Student : Teacher'},{v:'6+',l:'Cocurricular programs'},{v:'8 AM',l:'Doors open'}];
+    return {rootRef:this.rootRef, facilities, highlights,
+      tiltMove:(e)=>{const c=e.currentTarget,r=c.getBoundingClientRect();const x=(e.clientX-r.left)/r.width-0.5,y=(e.clientY-r.top)/r.height-0.5;c.style.transform='rotateY('+(x*9)+'deg) rotateX('+(-y*9)+'deg) translateY(-5px)';},
+      tiltLeave:(e)=>{e.currentTarget.style.transform='rotateY(0) rotateX(0) translateY(0)';}};
+  }
+}
+</script>
+</body>
+</html>

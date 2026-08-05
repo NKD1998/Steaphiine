@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:#F7F9FD}
+  a{color:#12A6CE}a:hover{color:#0E1E5B}
+  @keyframes spinslow{to{transform:rotate(360deg)}}
+</style>
+</helmet>
+<div ref="{{ rootRef }}" style="font-family:'Plus Jakarta Sans',sans-serif;color:#1B2340;overflow-x:hidden">
+  <dc-import name="NavBar" active="academics" hint-size="100%,68px"></dc-import>
+
+  <section style="position:relative;padding:150px 24px 90px;overflow:hidden;background:radial-gradient(800px 400px at 82% 10%,rgba(92,46,134,.5),transparent),linear-gradient(120deg,#0E1E5B,#17246E)">
+    <div style="position:absolute;top:-30px;right:6%;width:220px;height:220px;opacity:.16;animation:spinslow 55s linear infinite"><dc-import name="Logo" hint-size="100%,100%"></dc-import></div>
+    <div style="max-width:1240px;margin:0 auto;position:relative">
+      <div style="display:flex;gap:8px;align-items:center;color:#9FAAD6;font-size:14px;margin-bottom:16px"><a href="index.dc.html" style="color:#9FAAD6;text-decoration:none">Home</a><span>/</span><span style="color:#F6C21C">Academics</span></div>
+      <h1 style="font-family:'Sora',sans-serif;font-weight:800;font-size:clamp(34px,5vw,58px);color:#fff;margin:0 0 16px;letter-spacing:-.02em">Academics</h1>
+      <p style="color:#D5DEF7;font-size:clamp(16px,1.6vw,19px);line-height:1.6;max-width:660px;margin:0">A structured Maharashtra State Board education from Nursery to Standard 10 — taught in English, with small classes that keep every learner engaged.</p>
+    </div>
+  </section>
+
+  <section data-reveal style="max-width:1240px;margin:-56px auto 0;position:relative;z-index:5;padding:0 24px;opacity:0;transform:translateY(28px);transition:opacity .7s,transform .7s">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px">
+      <sc-for list="{{ facts }}" as="f" hint-placeholder-count="3">
+        <div style="background:#fff;border-radius:20px;padding:28px 24px;box-shadow:0 18px 46px rgba(23,36,110,.1);display:flex;gap:16px;align-items:flex-start">
+          <span style="width:52px;height:52px;flex:none;border-radius:14px;display:flex;align-items:center;justify-content:center;background:{{ f.bg }}">{{ f.icon }}</span>
+          <div><div style="font-family:'Sora',sans-serif;font-weight:700;color:#17246E;font-size:17px;margin-bottom:4px">{{ f.title }}</div><div style="color:#5A6488;font-size:14.5px;line-height:1.55">{{ f.text }}</div></div>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+
+  <section data-reveal style="max-width:1240px;margin:0 auto;padding:84px 24px 40px;opacity:0;transform:translateY(28px);transition:opacity .7s,transform .7s">
+    <div style="max-width:640px;margin:0 auto 48px;text-align:center">
+      <span style="color:#12A6CE;font-weight:700;font-size:14px;letter-spacing:.14em;text-transform:uppercase">Learning Journey</span>
+      <h2 style="font-family:'Sora',sans-serif;font-weight:800;font-size:clamp(28px,4vw,42px);color:#17246E;margin:12px 0 0;letter-spacing:-.02em">Three stages, one continuous path</h2>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:22px">
+      <sc-for list="{{ stages }}" as="s" hint-placeholder-count="3">
+        <div style="background:#fff;border:1px solid #EAEEF9;border-radius:24px;padding:clamp(24px,3vw,40px);display:grid;grid-template-columns:auto 1fr;gap:clamp(20px,3vw,40px);align-items:center;box-shadow:0 6px 20px rgba(23,36,110,.05);transition:box-shadow .3s" style-hover="box-shadow:0 20px 48px rgba(23,36,110,.13)">
+          <div style="width:clamp(80px,10vw,120px);height:clamp(80px,10vw,120px);border-radius:24px;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#fff;background:{{ s.bg }}">
+            <span style="font-family:'Sora',sans-serif;font-weight:800;font-size:clamp(26px,3vw,38px);line-height:1">{{ s.big }}</span>
+            <span style="font-size:11px;letter-spacing:.1em;opacity:.9;margin-top:2px">{{ s.age }}</span>
+          </div>
+          <div>
+            <div style="display:flex;flex-wrap:wrap;align-items:center;gap:12px;margin-bottom:10px"><h3 style="font-family:'Sora',sans-serif;font-weight:800;font-size:clamp(20px,2.4vw,26px);color:#17246E;margin:0">{{ s.title }}</h3><span style="background:#EAF0FF;color:#17246E;font-size:12.5px;font-weight:700;padding:5px 12px;border-radius:999px">{{ s.grades }}</span></div>
+            <p style="color:#4A5578;font-size:15.5px;line-height:1.7;margin:0 0 14px">{{ s.text }}</p>
+            <div style="display:flex;flex-wrap:wrap;gap:8px">
+              <sc-for list="{{ s.subjects }}" as="sub" hint-placeholder-count="4">
+                <span style="background:#F3F6FF;color:#3A4780;font-size:13px;font-weight:600;padding:6px 13px;border-radius:9px">{{ sub }}</span>
+              </sc-for>
+            </div>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+
+  <section data-reveal style="background:linear-gradient(180deg,#F7F9FD,#EEF2FC);padding:88px 24px;opacity:0;transform:translateY(28px);transition:opacity .7s,transform .7s">
+    <div style="max-width:1240px;margin:0 auto">
+      <div style="max-width:640px;margin:0 auto 48px;text-align:center">
+        <span style="color:#12A6CE;font-weight:700;font-size:14px;letter-spacing:.14em;text-transform:uppercase">Beyond Academics</span>
+        <h2 style="font-family:'Sora',sans-serif;font-weight:800;font-size:clamp(28px,4vw,42px);color:#17246E;margin:12px 0 12px;letter-spacing:-.02em">Cocurricular activities</h2>
+        <p style="color:#5A6488;font-size:16px;line-height:1.6;margin:0">Offered through our Groww Edu Hub — building creativity, discipline and confidence alongside the classroom.</p>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:18px;perspective:1000px">
+        <sc-for list="{{ activities }}" as="a" hint-placeholder-count="6">
+          <div onMouseMove="{{ tiltMove }}" onMouseLeave="{{ tiltLeave }}" style="background:#fff;border:1px solid #EAEEF9;border-radius:20px;padding:26px 22px;text-align:center;transform-style:preserve-3d;transition:transform .2s ease-out,box-shadow .3s" style-hover="box-shadow:0 18px 40px rgba(23,36,110,.14)">
+            <div style="width:60px;height:60px;margin:0 auto 14px;border-radius:16px;display:flex;align-items:center;justify-content:center;background:{{ a.bg }};transform:translateZ(24px)">{{ a.icon }}</div>
+            <div style="font-family:'Sora',sans-serif;font-weight:700;color:#17246E;font-size:16px;transform:translateZ(14px)">{{ a.name }}</div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <section data-reveal style="padding:80px 24px;opacity:0;transform:translateY(28px);transition:opacity .7s,transform .7s">
+    <div style="max-width:1240px;margin:0 auto;border-radius:28px;padding:clamp(40px,6vw,64px);display:grid;grid-template-columns:1.3fr 1fr;gap:40px;align-items:center;background:linear-gradient(120deg,#17246E,#0E1E5B);box-shadow:0 26px 60px rgba(23,36,110,.24)">
+      <div>
+        <h2 style="font-family:'Sora',sans-serif;font-weight:800;font-size:clamp(26px,3.4vw,38px);color:#fff;margin:0 0 14px;letter-spacing:-.02em">Curious about the curriculum?</h2>
+        <p style="color:#CBD6F5;font-size:16.5px;line-height:1.6;margin:0 0 26px">Reach out to learn more about subjects, timetables and how we support each stage of learning.</p>
+        <a href="contact.dc.html" style="text-decoration:none;background:linear-gradient(135deg,#F6C21C,#F0A400);color:#17246E;font-weight:700;font-size:16px;padding:15px 28px;border-radius:999px;box-shadow:0 12px 30px rgba(240,164,0,.4);display:inline-block;transition:transform .2s" style-hover="transform:translateY(-3px)">Talk to Us</a>
+      </div>
+      <div style="display:flex;justify-content:center"><div style="width:clamp(120px,16vw,180px);height:clamp(120px,16vw,180px);opacity:.9;animation:spinslow 40s linear infinite"><dc-import name="Logo" hint-size="100%,100%"></dc-import></div></div>
+    </div>
+  </section>
+
+  <dc-import name="Footer" hint-size="100%,320px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1280,&quot;height&quot;:900}}">
+class Component extends DCLogic {
+  rootRef = React.createRef();
+  componentDidMount(){
+    const io=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.style.opacity='1';e.target.style.transform='translateY(0)';io.unobserve(e.target);}})},{threshold:0.1});
+    if(this.rootRef.current) this.rootRef.current.querySelectorAll('[data-reveal]').forEach(el=>io.observe(el));
+  }
+  renderVals(){
+    const ic=(p,c)=>React.createElement('span',{style:{lineHeight:0},dangerouslySetInnerHTML:{__html:p}});
+    const facts=[
+      {title:'State Board', text:'Maharashtra State Board curriculum, followed from the primary years onward.', bg:'#E7F6FB', icon:ic('<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#12A6CE" stroke-width="2" stroke-linecap="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>')},
+      {title:'English Medium', text:'All subjects taught in English to build strong, confident communication.', bg:'#FEF4D9', icon:ic('<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#F0A400" stroke-width="2" stroke-linecap="round"><path d="M12 20V4M5 20V9M19 20v-7"/><circle cx="5" cy="6" r="1.6"/><circle cx="19" cy="10" r="1.6"/><circle cx="12" cy="4" r="0"/></svg>')},
+      {title:'21:1 Class Ratio', text:'Small classes mean more attention, faster help and stronger relationships.', bg:'#EFE7FB', icon:ic('<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#5C2E86" stroke-width="2" stroke-linecap="round"><circle cx="9" cy="7" r="3"/><path d="M3 20a6 6 0 0 1 12 0"/><circle cx="17.5" cy="8.5" r="2.2"/><path d="M15 20a4.5 4.5 0 0 1 6.5-4"/></svg>')}
+    ];
+    const stages=[
+      {big:'1', age:'Nur–4', title:'Early Years & Primary', grades:'Nursery to Std 4', bg:'linear-gradient(150deg,#12A6CE,#17246E)', text:'Play-led, joyful learning that builds a love of reading, numbers and discovery from the very first day of school.', subjects:['Phonics & Reading','English','Maths','EVS','Drawing & Craft','Rhymes']},
+      {big:'2', age:'Std 5–7', title:'Upper Primary', grades:'Std 5 to 7', bg:'linear-gradient(150deg,#5C2E86,#2A1550)', text:'Foundations deepen across languages, mathematics and the sciences, with growing independence and curiosity.', subjects:['English','Marathi/Hindi','Mathematics','Science','Social Studies','Computers']},
+      {big:'3', age:'Std 8–10', title:'Secondary', grades:'Std 8 to 10', bg:'linear-gradient(150deg,#F0A400,#B9640A)', text:'Focused preparation for the State Board examinations, with mentoring, practice and steady academic support.', subjects:['English','Mathematics','Science','Social Sciences','Languages','Board Prep']}
+    ];
+    const activities=[
+      {name:'Karate', bg:'#E7F6FB', icon:ic('<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#12A6CE" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="5" r="2.5"/><path d="M12 8v6l-4 6M12 14l4 6M6 11l6-2 6 2"/></svg>')},
+      {name:'Dance', bg:'#FEF4D9', icon:ic('<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#F0A400" stroke-width="2" stroke-linecap="round"><circle cx="13" cy="4" r="2"/><path d="M13 6c-1 3-4 3-4 6l3 2-2 6M13 10l4 2 1 4"/></svg>')},
+      {name:'Drawing', bg:'#EFE7FB', icon:ic('<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#5C2E86" stroke-width="2" stroke-linecap="round"><path d="M12 19l7-7 3 3-7 7-4 1 1-4z"/><path d="M18 13l-1.5-1.5M2 6l4-4 3 3-4 4z"/></svg>')},
+      {name:'Abacus & Vedic Maths', bg:'#E5F7EC', icon:ic('<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#1FA463" stroke-width="2" stroke-linecap="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M3 14h18M8 4v3M13 9v5M17 14v6"/></svg>')},
+      {name:'Jolly Phonics & Grammar', bg:'#E7F6FB', icon:ic('<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#12A6CE" stroke-width="2" stroke-linecap="round"><path d="M4 5h10a3 3 0 0 1 3 3v11a2.5 2.5 0 0 0-2.5-2H4z"/><path d="M20 5h-2a3 3 0 0 0-3 3v11a2.5 2.5 0 0 1 2.5-2H20z"/></svg>')},
+      {name:'Tuitions Std 1–10', bg:'#FEF4D9', icon:ic('<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#F0A400" stroke-width="2" stroke-linecap="round"><path d="M22 10 12 5 2 10l10 5 10-5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>')}
+    ];
+    return {rootRef:this.rootRef, facts, stages, activities,
+      tiltMove:(e)=>{const c=e.currentTarget,r=c.getBoundingClientRect();const x=(e.clientX-r.left)/r.width-0.5,y=(e.clientY-r.top)/r.height-0.5;c.style.transform='rotateY('+(x*9)+'deg) rotateX('+(-y*9)+'deg) translateY(-5px)';},
+      tiltLeave:(e)=>{e.currentTarget.style.transform='rotateY(0) rotateX(0) translateY(0)';}};
+  }
+}
+</script>
+</body>
+</html>
